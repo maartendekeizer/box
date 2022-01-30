@@ -1,0 +1,68 @@
+name: Build
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+    release:
+        types: [ created ]
+
+jobs:
+    build-phar:
+        runs-on: ubuntu-latest
+        name: Build PHAR
+        steps:
+            -   uses: actions/checkout@v2
+                with:
+                    fetch-depth: 0
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    ini-values: phar.readonly=0, display_errors=On, error_reporting=-1
+                    tools: composer
+                    coverage: none
+
+            -   name: Install Composer dependencies
+                uses: ramsey/composer-install@v1
+                with:
+                    composer-options: '--prefer-dist'
+
+            -   name: Install Composer RequirementChecker dependencies
+                uses: ramsey/composer-install@v1
+                with:
+                    working-directory: 'requirement-checker'
+                    composer-options: '--prefer-dist'
+
+            -   name: Build PHAR
+                run: make compile
+
+            # Smoke test
+            -   name: Ensure the PHAR works
+                run: bin/box.phar --version
+
+            -   uses: actions/upload-artifact@v2
+                name: Upload the PHAR artifact
+                with:
+                    name: box-phar
+                    path: bin/box.phar
+
+
+    publish-phar:
+        runs-on: ubuntu-latest
+        name: Publish the PHAR
+        needs:
+            - 'build-phar'
+        if: github.event_name == 'release'
+        steps:
+            -   uses: actions/download-artifact@v2
+                with:
+                    name: box-phar
+                    path: .
+
+            -   name: Upload box.phar
+                uses: softprops/action-gh-release@v1
+                with:
+                    token: ${{ secrets.PHP_SCOPER_GITHUB_TOKEN }}
+                    files: box.phar
