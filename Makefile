@@ -294,6 +294,15 @@ e2e_phpstorm_stubs: box
 
 	diff fixtures/build/dir014/expected-output fixtures/build/dir014/actual-output
 
+.PHONY: e2e_phpstan
+e2e_phpstan:		 ## Project using PHPStan
+e2e_phpstan: box
+	./box compile --working-dir=fixtures/build/dir015 --no-parallel
+
+	php fixtures/build/dir015/index.phar > fixtures/build/dir015/actual-output
+
+	diff fixtures/build/dir015/expected-output fixtures/build/dir015/actual-output
+
 .PHONY: blackfire
 blackfire:		 ## Profiles the compile step
 blackfire: box

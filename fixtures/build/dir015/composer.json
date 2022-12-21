@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "phpstan/phpstan": "^1.9"
+    },
+    "require": {
+        "fidry/cpu-core-counter": "^0.5.0"
+    }
+}

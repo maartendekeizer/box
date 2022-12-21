@@ -1,6 +1,6 @@
 <?php
 
-namespace HumbugBox402\KevinGH\RequirementChecker;
+namespace HumbugBox420\KevinGH\RequirementChecker;
 
 use function array_shift;
 use function count;
