@@ -69,8 +69,7 @@ _test_e2e_pass_no_config_min_composer_php: $(E2E_TEST_PASS_NO_CONFIG_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_PASS_NO_CONFIG_DIR)":/opt/box \
-		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_PASS_NO_CONFIG_MIN_COMPOSER_EXPECTED_OUTPUT) \
 		$(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
@@ -86,8 +85,7 @@ _test_e2e_pass_no_config_min_box_php: $(E2E_TEST_PASS_NO_CONFIG_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_PASS_NO_CONFIG_DIR)":/opt/box \
-		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_PASS_NO_CONFIG_MIN_BOX_EXPECTED_OUTPUT) \
 		$(E2E_TEST_PASS_NO_CONFIG_ACTUAL_OUTPUT)
@@ -107,8 +105,7 @@ _test_e2e_pass_complete_min_composer_php: $(E2E_TEST_PASS_COMPLETE_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_PASS_COMPLETE_DIR)":/opt/box \
-		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_PASS_COMPLETE_MIN_COMPOSER_EXPECTED_OUTPUT) \
 		$(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
@@ -124,8 +121,7 @@ _test_e2e_pass_complete_min_box_php: $(E2E_TEST_PASS_COMPLETE_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_PASS_COMPLETE_DIR)":/opt/box \
-		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_PASS_COMPLETE_MIN_BOX_EXPECTED_OUTPUT) \
 		$(E2E_TEST_PASS_COMPLETE_ACTUAL_OUTPUT)
@@ -145,8 +141,7 @@ _test_e2e_fail_complete_min_composer_php: $(E2E_TEST_FAIL_COMPLETE_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_FAIL_COMPLETE_DIR)":/opt/box \
-		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_FAIL_COMPLETE_MIN_COMPOSER_EXPECTED_OUTPUT) \
 		$(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
@@ -162,8 +157,7 @@ _test_e2e_fail_complete_min_box_php: $(E2E_TEST_FAIL_COMPLETE_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_FAIL_COMPLETE_DIR)":/opt/box \
-		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_BOX_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_FAIL_COMPLETE_MIN_BOX_EXPECTED_OUTPUT) \
 		$(E2E_TEST_FAIL_COMPLETE_ACTUAL_OUTPUT)
@@ -183,8 +177,7 @@ _test_e2e_skip_min_composer_php: $(E2E_TEST_SKIP_PHAR)
 
 	$(DOCKER_RUN) \
 		--volume="$$PWD/$(E2E_TEST_SKIP_DIR)":/opt/box \
-		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) \
-		2>&1 | tee $(E2E_TEST_SKIP_ACTUAL_OUTPUT)
+		$(DOCKER_MIN_COMPOSER_PHP_VERSION_RUN_COMMAND) 2>&1 | tee $(E2E_TEST_SKIP_ACTUAL_OUTPUT)
 	diff --ignore-all-space --side-by-side --suppress-common-lines \
 		$(E2E_TEST_SKIP_MIN_COMPOSER_EXPECTED_OUTPUT) \
 		$(E2E_TEST_SKIP_ACTUAL_OUTPUT)
