@@ -117,7 +117,7 @@ jobs:
                 uses: ramsey/composer-install@v2
                 with:
                     working-directory: requirement-checker
-                    dependency-versions: ${{ matrix.dependency }}
+                    dependency-versions: locked
                     composer-options: ${{ matrix.composer-options }}
 
             -   name: Ensure that the make target is up to date
