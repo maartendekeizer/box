@@ -38,6 +38,14 @@ jobs:
             -   name: Ensure that the PHP-CS-Fixer make target is up to date
                 run: make php_cs_fixer_install
 
+            -   name: Install the Composer dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    working-directory: requirement-checker
+
+            -   name: Ensure that the make target is up to date
+                run: cd requirement-checker; make _vendor_install
+
             -   name: Lint CS
                 run: cd requirement-checker; make cs_lint
 
