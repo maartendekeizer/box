@@ -123,6 +123,9 @@ class Terminal
         return function_exists('sapi_windows_vt100_support') && sapi_windows_vt100_support(fopen('php://stdout', 'wb'));
     }
 
+    /**
+     * Initializes dimensions using the output of an stty columns line.
+     */
     private static function initDimensionsUsingStty(): void
     {
         if ($sttyString = self::getSttyColumns()) {

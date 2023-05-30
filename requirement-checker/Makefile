@@ -140,7 +140,7 @@ php_cs_fixer_lint: $(PHP_CS_FIXER_BIN)
 
 .PHONY: test
 test:		## Runs all the tests
-test: terminal_copy test_unit test_e2e
+test: test_unit test_e2e
 
 
 #
