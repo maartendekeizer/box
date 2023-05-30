@@ -67,7 +67,7 @@ jobs:
                 uses: ramsey/composer-install@v2
                 with:
                     dependency-versions: locked
-                    working-directory: requirement-checker
+                    working-directory: vendor-bin/requirement-checker
 
             -   name: Ensure that the make target is up to date
                 run: make requirement_checker_install
