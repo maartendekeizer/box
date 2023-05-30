@@ -14,6 +14,12 @@ PHPUNIT = $(PHPUNIT_BIN)
 ACTUAL_TERMINAL_DIFF = tests/TerminalCompatibility/actual_diff
 EXPECTED_TERMINAL_DIFF = tests/TerminalCompatibility/expected_diff
 ORIGINAL_TERMINAL = ../vendor-bin/requirement-checker/vendor/symfony/console/Terminal.php
+DIFF = diff --ignore-all-space \
+	--ignore-trailing-space \
+	--ignore-blank-lines \
+	--side-by-side \
+	--suppress-common-lines \
+	--width=150
 
 PHP_CS_FIXER_BIN = ../vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer
 PHP_CS_FIXER = $(PHP_CS_FIXER_BIN)
@@ -157,14 +163,7 @@ phpunit: $(PHPUNIT_BIN) vendor
 
 .PHONY: terminal_copy
 terminal_copy: $(ACTUAL_TERMINAL_DIFF)
-	cat $(ACTUAL_TERMINAL_DIFF)
-
-	diff --ignore-all-space \
-		--ignore-trailing-space \
-		--ignore-blank-lines \
-		--side-by-side \
-		--suppress-common-lines \
-		$(EXPECTED_TERMINAL_DIFF) $(ACTUAL_TERMINAL_DIFF)
+	$(DIFF) $(EXPECTED_TERMINAL_DIFF) $(ACTUAL_TERMINAL_DIFF)
 
 
 #
@@ -207,7 +206,7 @@ $(PHPUNIT_BIN): composer.lock
 	touch -c $@
 
 $(ACTUAL_TERMINAL_DIFF): src/Terminal.php vendor $(ORIGINAL_TERMINAL)
-	(diff --ignore-all-space --side-by-side --suppress-common-lines $(ORIGINAL_TERMINAL) src/Terminal.php || true) > $@
+	($(DIFF) $(ORIGINAL_TERMINAL) src/Terminal.php || true) > $@
 	touch -c $@
 
 $(ORIGINAL_TERMINAL):
