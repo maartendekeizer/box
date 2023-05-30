@@ -92,7 +92,7 @@ _dump: $(PHAR_EXTRACT)
 
 .PHONY: autoreview
 autoreview:	## AutoReview checks
-autoreview: cs_lint phpunit_autoreview
+autoreview: cs_lint phpunit_autoreview terminal_copy
 
 .PHONY: phpunit_autoreview
 phpunit_autoreview:
@@ -140,7 +140,7 @@ php_cs_fixer_lint: $(PHP_CS_FIXER_BIN)
 
 .PHONY: test
 test:		## Runs all the tests
-test: test_unit test_e2e
+test: terminal_copy test_unit test_e2e
 
 
 #
@@ -148,7 +148,7 @@ test: test_unit test_e2e
 #---------------------------------------------------------------------------
 
 .PHONY: test_unit
-test_unit: phpunit terminal_copy
+test_unit: phpunit
 
 .PHONY: phpunit
 phpunit:
