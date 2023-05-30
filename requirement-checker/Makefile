@@ -14,12 +14,7 @@ PHPUNIT = $(PHPUNIT_BIN)
 ACTUAL_TERMINAL_DIFF = tests/TerminalCompatibility/actual_diff
 EXPECTED_TERMINAL_DIFF = tests/TerminalCompatibility/expected_diff
 ORIGINAL_TERMINAL = ../vendor-bin/requirement-checker/vendor/symfony/console/Terminal.php
-DIFF = diff --ignore-all-space \
-	--ignore-trailing-space \
-	--ignore-blank-lines \
-	--side-by-side \
-	--suppress-common-lines \
-	--width=150
+DIFF = diff --ignore-all-space --ignore-trailing-space --ignore-blank-lines --side-by-side --suppress-common-lines --width=150
 
 PHP_CS_FIXER_BIN = ../vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer
 PHP_CS_FIXER = $(PHP_CS_FIXER_BIN)
