@@ -58,11 +58,19 @@ jobs:
             -   name: Install the Composer dependencies
                 uses: ramsey/composer-install@v2
                 with:
-                    dependency-versions: locked
                     working-directory: requirement-checker
 
             -   name: Ensure that the make target is up to date
                 run: cd requirement-checker; make _vendor_install
+
+            -   name: Install the Composer (requirement checker bin namespace) dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    dependency-versions: locked
+                    working-directory: requirement-checker
+
+            -   name: Ensure that the make target is up to date
+                run: make requirement_checker_install
 
             -   name: Run tests
                 run: cd requirement-checker; make phpunit_autoreview
@@ -106,6 +114,13 @@ jobs:
                     php-version: ${{ matrix.php }}
                     tools: composer
                     coverage: none
+
+            -   name: Install the Composer dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    working-directory: requirement-checker
+                    dependency-versions: ${{ matrix.dependency }}
+                    composer-options: ${{ matrix.composer-options }}
 
             -   name: Ensure that the make target is up to date
                 run: cd requirement-checker; make _vendor_install
@@ -266,6 +281,15 @@ jobs:
                     tools: composer
                     coverage: none
 
+            -   name: Install the Composer dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    working-directory: requirement-checker
+                    dependency-versions: ${{ matrix.php.dependency }}
+                    composer-options: ${{ matrix.php.composer-options }}
+                env:
+                    COMPOSER_ROOT_VERSION: "4.x.x-dev"
+
             -   name: Ensure that the make target is up to date
                 run: cd requirement-checker; make _vendor_install
 
@@ -279,16 +303,6 @@ jobs:
 
             -   name: Ensure that the make target is up to date
                 run: make _vendor_install
-
-            -   name: Install the Composer (requirement checker bin namespace) dependencies
-                uses: ramsey/composer-install@v2
-                with:
-                    working-directory: vendor-bin/requirement-checker
-                    dependency-versions: highest
-                    composer-options: ${{ matrix.php.composer-options }}
-
-            -   name: Ensure that the make target is up to date
-                run: make requirement_checker_install
 
             -   name: Dump the requirement checker
                 run: make dump_requirement_checker
