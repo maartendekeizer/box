@@ -88,6 +88,12 @@ jobs:
             -   name: Run tests
                 run: cd requirement-checker; make phpunit_autoreview
 
+            -   name: Debug
+                run: cat requirement-checker/tests/TerminalCompatibility/actual_diff
+
+            -   name: Debug
+                run: cat requirement-checker/tests/TerminalCompatibility/expected_diff
+
             -   name: Check Terminal compatibility
                 run: cd requirement-checker; make terminal_copy
 
