@@ -71,6 +71,11 @@ jobs:
             -   name: Ensure that the make target is up to date
                 run: cd requirement-checker; make _vendor_install
 
+            -   name: Install the Composer (root) dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    dependency-versions: locked
+
             -   name: Install the Composer (requirement checker bin namespace) dependencies
                 uses: ramsey/composer-install@v2
                 with:
