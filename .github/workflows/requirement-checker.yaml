@@ -89,6 +89,9 @@ jobs:
                 run: cd requirement-checker; make phpunit_autoreview
 
             -   name: Debug
+                run: cd requirement-checker; make tests/TerminalCompatibility/actual_diff
+
+            -   name: Debug
                 run: cat requirement-checker/tests/TerminalCompatibility/actual_diff
 
             -   name: Debug
