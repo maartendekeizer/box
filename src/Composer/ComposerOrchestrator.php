@@ -153,7 +153,6 @@ final class ComposerOrchestrator
     {
 print_r([__CLASS__, __METHOD__, getenv()]);
         $dumpAutoloadProcess = $this->processFactory->getDumpAutoloaderProcess($noDev);
-        $dumpAutoloadProcess->
 
         $this->logger->info($dumpAutoloadProcess->getCommandLine());
 
