@@ -120,7 +120,7 @@ final class ComposerOrchestrator
         }
 
         $autoloadFile = $this->getVendorDir().'/autoload.php';
-
+print_r(getenv());
         $autoloadContents = AutoloadDumper::generateAutoloadStatements(
             $symbolsRegistry,
             $this->fileSystem->getFileContents($autoloadFile),
