@@ -65,8 +65,7 @@ class ComposerProcessFactory
 
     public function getDumpAutoloaderProcess(bool $noDev): Process
     {
-        // XdebugHandler::getRestartSettings()['tmpIni'];
-        $composerCommand = ['php', '-c', php_ini_loaded_file(), $this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
+        $composerCommand = [/*'php', '-c', php_ini_loaded_file(),*/ $this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
 
         if (true === $noDev) {
             $composerCommand[] = '--no-dev';
@@ -80,6 +79,7 @@ class ComposerProcessFactory
             $composerCommand[] = '--ansi';
         }
 
+        ////////// Important is to remove the composer original inis here
         return $this->createProcess($composerCommand, ['COMPOSER_ORIGINAL_INIS' => '']);
     }
 
