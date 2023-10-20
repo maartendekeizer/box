@@ -156,7 +156,12 @@ print_r([__CLASS__, __METHOD__, getenv()]);
 
         $this->logger->info($dumpAutoloadProcess->getCommandLine());
 
-        print_r(XdebugHandler::getRestartSettings());
+        $envs = $dumpAutoloadProcess->getEnv();
+print_r(['envs before', $envs]);
+        $envs['PHPRC'] = XdebugHandler::getRestartSettings()['tmpIni'];
+print_r(['envs after', $envs]);
+
+        $dumpAutoloadProcess->setEnv($envs);
         $dumpAutoloadProcess->run();
 
         if (false === $dumpAutoloadProcess->isSuccessful()) {
