@@ -65,7 +65,8 @@ class ComposerProcessFactory
 
     public function getDumpAutoloaderProcess(bool $noDev): Process
     {
-        $composerCommand = [$this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
+        // XdebugHandler::getRestartSettings()['tmpIni'];
+        $composerCommand = ['php', $this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
 
         if (true === $noDev) {
             $composerCommand[] = '--no-dev';

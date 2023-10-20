@@ -151,17 +151,11 @@ final class ComposerOrchestrator
 
     private function dumpAutoloader(bool $noDev): void
     {
-print_r([__CLASS__, __METHOD__, getenv()]);
+print_r([__CLASS__, __METHOD__, getenv(), php_ini_loaded_file()]);
         $dumpAutoloadProcess = $this->processFactory->getDumpAutoloaderProcess($noDev);
 
         $this->logger->info($dumpAutoloadProcess->getCommandLine());
 
-        $envs = $dumpAutoloadProcess->getEnv();
-print_r(['envs before', $envs]);
-        $envs['PHPRC'] = XdebugHandler::getRestartSettings()['tmpIni'];
-print_r(['envs after', $envs]);
-
-        $dumpAutoloadProcess->setEnv($envs);
         $dumpAutoloadProcess->run();
 
         if (false === $dumpAutoloadProcess->isSuccessful()) {
