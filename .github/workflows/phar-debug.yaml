@@ -1,8 +1,10 @@
-name: PHAR DEBUG
+name: PHAR DEBUG2
 
 on:
   push:
-    branches: [ "main", "fix/phar-not-found" ]
+    branches:
+      - "fix/phar-not-found"
+
   pull_request: ~
 
 permissions:
