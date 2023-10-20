@@ -40,7 +40,7 @@ final class PhpSettingsHandler extends XdebugHandler
 
     public function __construct(LoggerInterface $logger)
     {
-        parent::__construct('composer');
+        parent::__construct('box');
 
         $this->setPersistent();
 

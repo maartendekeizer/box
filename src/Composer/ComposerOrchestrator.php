@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace KevinGH\Box\Composer;
 
 use Composer\Semver\Semver;
+use Composer\XdebugHandler\XdebugHandler;
 use Fidry\Console\Input\IO;
 use Fidry\FileSystem\FileSystem;
 use Humbug\PhpScoper\Symbol\SymbolsRegistry;
@@ -152,9 +153,11 @@ final class ComposerOrchestrator
     {
 print_r([__CLASS__, __METHOD__, getenv()]);
         $dumpAutoloadProcess = $this->processFactory->getDumpAutoloaderProcess($noDev);
+        $dumpAutoloadProcess->
 
         $this->logger->info($dumpAutoloadProcess->getCommandLine());
 
+        print_r(XdebugHandler::getRestartSettings());
         $dumpAutoloadProcess->run();
 
         if (false === $dumpAutoloadProcess->isSuccessful()) {
