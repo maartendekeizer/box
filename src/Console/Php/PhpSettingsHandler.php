@@ -140,6 +140,8 @@ final class PhpSettingsHandler extends XdebugHandler
                 ),
             );
         }
+
+        $this->logger->debug('PHP ini used: ' . php_ini_loaded_file());
     }
 
     private static function getUserDefinedMemoryLimit(): ?int
