@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace KevinGH\Box\Composer;
 
 use Composer\Semver\Semver;
-use Composer\XdebugHandler\XdebugHandler;
 use Fidry\Console\Input\IO;
 use Fidry\FileSystem\FileSystem;
 use Humbug\PhpScoper\Symbol\SymbolsRegistry;
@@ -151,7 +150,6 @@ final class ComposerOrchestrator
 
     private function dumpAutoloader(bool $noDev): void
     {
-print_r([__CLASS__, __METHOD__, getenv(), php_ini_loaded_file()]);
         $dumpAutoloadProcess = $this->processFactory->getDumpAutoloaderProcess($noDev);
 
         $this->logger->info($dumpAutoloadProcess->getCommandLine());

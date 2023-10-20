@@ -65,7 +65,7 @@ class ComposerProcessFactory
 
     public function getDumpAutoloaderProcess(bool $noDev): Process
     {
-        $composerCommand = [/*'php', '-c', php_ini_loaded_file(),*/ $this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
+        $composerCommand = [$this->composerExecutable, 'dump-autoload', '--classmap-authoritative'];
 
         if (true === $noDev) {
             $composerCommand[] = '--no-dev';
@@ -95,7 +95,7 @@ class ComposerProcessFactory
             ],
             // Ensure that even if this command gets executed within the app with --quiet it still
             // works.
-            ['SHELL_VERBOSITY' => 0,],
+            ['SHELL_VERBOSITY' => 0],
         );
     }
 
