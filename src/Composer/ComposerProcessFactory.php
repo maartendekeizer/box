@@ -80,7 +80,7 @@ class ComposerProcessFactory
             $composerCommand[] = '--ansi';
         }
 
-        return $this->createProcess($composerCommand);
+        return $this->createProcess($composerCommand, ['COMPOSER_ORIGINAL_INIS' => '']);
     }
 
     public function getVendorDirProcess(): Process
@@ -95,10 +95,7 @@ class ComposerProcessFactory
             ],
             // Ensure that even if this command gets executed within the app with --quiet it still
             // works.
-            [
-                'SHELL_VERBOSITY' => 0,
-                'COMPOSER_ORIGINAL_INIS' => ''
-            ],
+            ['SHELL_VERBOSITY' => 0,],
         );
     }
 
