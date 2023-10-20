@@ -1,0 +1,36 @@
+name: PHAR DEBUG2
+
+on:
+  push:
+    branches:
+      - "main"
+      - "fix/phar-not-found"
+
+  pull_request: ~
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      -   name: Setup PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: '8.2'
+            tools: composer
+            coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --working-dir=fixtures/build/dir018 --no-scripts
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-scripts
+
+      - name: regular check
+        run: bin/box composer:dump-autoload -vvv
