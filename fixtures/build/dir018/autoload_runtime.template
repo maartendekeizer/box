@@ -8,8 +8,6 @@ if (true === (require_once __DIR__.'/autoload.php') || null === $scriptFileName 
     return;
 }
 
-print_r(get_loaded_extensions());
-
 $pharPath = Phar::running();
 
 if (strlen($pharPath) > 0 && !str_starts_with($scriptFileName, 'phar://')) {
