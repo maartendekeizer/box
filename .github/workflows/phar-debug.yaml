@@ -1,4 +1,4 @@
-name: PHAR DEBUG2
+name: PHAR DEBUG
 
 on:
   push:
