@@ -95,7 +95,10 @@ class ComposerProcessFactory
             ],
             // Ensure that even if this command gets executed within the app with --quiet it still
             // works.
-            ['SHELL_VERBOSITY' => 0],
+            [
+                'SHELL_VERBOSITY' => 0,
+                'COMPOSER_ORIGINAL_INIS' => ''
+            ],
         );
     }
 
