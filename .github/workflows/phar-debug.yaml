@@ -2,7 +2,7 @@ name: PHAR DEBUG
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "fix/phar-not-found" ]
   pull_request: ~
 
 permissions:
